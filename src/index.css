@@ -1,0 +1,389 @@
+/* ==========================================================================
+   VISHWANATH C V — INDUSTRIAL PORTFOLIO DESIGN SYSTEM
+   Strict 3-Color Palette:
+   1. Deep Graphite:    #20272B
+   2. Engineering Ivory: #F4F1E8
+   3. Volvo Cyan Blue:   #00AEEF
+   ========================================================================== */
+
+:root {
+  /* Strict Core Colors */
+  --color-graphite: #20272B;
+  --color-ivory: #F4F1E8;
+  --color-cyan: #00AEEF;
+
+  /* Deep Graphite Scale (Dark Sections, Technical Panels, Deep Chrome) */
+  --graphite-950: #171E22;
+  --graphite-900: #20272B;
+  --graphite-850: #252D32;
+  --graphite-800: #2C363C;
+  --graphite-700: #38454D;
+  --graphite-600: #4B5B65;
+  --graphite-500: #62747F;
+  --graphite-400: #82949F;
+  --graphite-300: #A8B7C0;
+  --graphite-200: #CBD5DB;
+  --graphite-100: #E6EBEE;
+
+  /* Engineering Ivory Scale (Light Sections, Negative Space, Editorial Backgrounds) */
+  --ivory-50: #FAF8F3;
+  --ivory-100: #F4F1E8;
+  --ivory-200: #ECE7DC;
+  --ivory-300: #DFD8C9;
+  --ivory-400: #CDC3B0;
+  --ivory-500: #B2A790;
+  --ivory-600: #8A7F6A;
+  --ivory-700: #5F5645;
+  --ivory-800: #3D3629;
+  --ivory-900: #20272B;
+
+  /* Volvo-inspired Cyan Scale (Accents, Status Indicators, CAD Overlays) */
+  --cyan-400: #33BFF2;
+  --cyan-500: #00AEEF;
+  --cyan-600: #0093CB;
+  --cyan-700: #0076A3;
+  --cyan-glow: rgba(0, 174, 239, 0.28);
+  --cyan-subtle: rgba(0, 174, 239, 0.08);
+  --cyan-border: rgba(0, 174, 239, 0.35);
+
+  /* Typography */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Layout & Spacing */
+  --container-max: 1280px;
+  --container-pad: clamp(1.25rem, 5vw, 3rem);
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Transitions */
+  --transition-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Shadows derived from Deep Graphite */
+  --shadow-sm: 0 1px 3px rgba(32, 39, 43, 0.08);
+  --shadow-md: 0 4px 14px rgba(32, 39, 43, 0.12);
+  --shadow-lg: 0 12px 32px rgba(32, 39, 43, 0.16);
+  --shadow-dark-card: 0 8px 24px rgba(10, 13, 15, 0.45);
+  --shadow-cyan-glow: 0 0 24px rgba(0, 174, 239, 0.25);
+}
+
+/* Base Reset & Typography */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  color: var(--graphite-900);
+  background-color: var(--color-ivory);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--color-ivory);
+  color: var(--graphite-900);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-cyan);
+  color: var(--color-graphite);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--graphite-900);
+}
+
+p {
+  color: var(--graphite-700);
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Containers */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+/* Section Shared */
+.section {
+  position: relative;
+  padding-top: clamp(4.5rem, 8vw, 8rem);
+  padding-bottom: clamp(4.5rem, 8vw, 8rem);
+}
+
+.section-dark {
+  background-color: var(--color-graphite);
+  color: var(--ivory-100);
+}
+
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4 {
+  color: var(--ivory-50);
+}
+
+.section-dark p {
+  color: var(--graphite-200);
+}
+
+.section-ivory {
+  background-color: var(--color-ivory);
+  color: var(--graphite-900);
+}
+
+/* Technical Header Elements */
+.section-header {
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-xs);
+  margin-bottom: 1rem;
+}
+
+.section-tag-dark {
+  background-color: rgba(0, 174, 239, 0.12);
+  color: var(--cyan-400);
+  border: 1px solid var(--cyan-border);
+}
+
+.section-tag-light {
+  background-color: var(--ivory-200);
+  color: var(--graphite-800);
+  border: 1px solid var(--ivory-300);
+}
+
+.section-tag .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-cyan);
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.section-desc {
+  max-width: 680px;
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.6;
+}
+
+/* Industrial Divider Lines */
+.technical-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--ivory-300);
+  position: relative;
+  margin: 3rem 0;
+}
+
+.technical-divider.dark {
+  background-color: var(--graphite-700);
+}
+
+.technical-divider::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 24px;
+  height: 5px;
+  background-color: var(--color-cyan);
+}
+
+/* CAD Technical Blueprint Grid Overlay (Optional inspectable mode) */
+.cad-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(32, 39, 43, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(32, 39, 43, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.cad-grid-pattern-dark {
+  background-image: 
+    linear-gradient(to right, rgba(0, 174, 239, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 174, 239, 0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-xs);
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--color-cyan);
+  color: var(--color-graphite);
+  border: 1px solid var(--color-cyan);
+  box-shadow: 0 2px 8px rgba(0, 174, 239, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: #26c1ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 174, 239, 0.35);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--graphite-900);
+  border: 1px solid var(--graphite-700);
+}
+
+.btn-secondary:hover {
+  background-color: var(--graphite-900);
+  color: var(--ivory-100);
+  transform: translateY(-2px);
+}
+
+.btn-secondary-dark {
+  background-color: transparent;
+  color: var(--ivory-100);
+  border: 1px solid var(--graphite-600);
+}
+
+.btn-secondary-dark:hover {
+  background-color: var(--graphite-800);
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-cyan);
+  border: 1px dashed var(--cyan-border);
+  padding: 0.6rem 1.2rem;
+  font-size: 0.8125rem;
+}
+
+.btn-ghost:hover {
+  background-color: var(--cyan-subtle);
+  border-style: solid;
+  border-color: var(--color-cyan);
+}
+
+/* Interactive Badge & Chips */
+.tech-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-xs);
+  background-color: var(--ivory-200);
+  color: var(--graphite-800);
+  border: 1px solid var(--ivory-300);
+}
+
+.tech-chip.dark {
+  background-color: var(--graphite-850);
+  color: var(--graphite-200);
+  border: 1px solid var(--graphite-700);
+}
+
+.tech-chip.cyan {
+  background-color: rgba(0, 174, 239, 0.12);
+  color: var(--cyan-400);
+  border: 1px solid var(--cyan-border);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--graphite-950);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--graphite-700);
+  border-radius: var(--radius-xs);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-cyan);
+}
